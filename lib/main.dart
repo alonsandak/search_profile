@@ -44,44 +44,47 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Fetch Data Example'),
+          title: Text('Search Profile Analyzie '),
         ),
-        body: FutureBuilder<List<Post>>(
-          future: futurePost,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (_, index) => Container(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    padding: EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                      color: Color(0xff97FFFF),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${snapshot.data[index].title}",
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+        body:
+        Container(
+          child: FutureBuilder<List<Post>>(
+            future: futurePost,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_, index) => Container(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding: EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xff97FFFF),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${snapshot.data[index].title}",
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 10),
-                        Text("${snapshot.data[index].body}"),
-                      ],
+                          SizedBox(height: 10),
+                          Text("${snapshot.data[index].body}"),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          },
+                );
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
         ),
       ),
     );
