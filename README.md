@@ -1,6 +1,8 @@
 # searchprofile
 
-A new Flutter application.
+A new Flutter application. 
+**Pieces toghether for whole App.
+**
 
 ## Getting Started
 
